@@ -85,11 +85,11 @@
 	</svelte:fragment>
 
 	<!-- Left Sidebar Slot -->
-	<svelte:fragment slot="sidebarLeft">
+	<!-- <svelte:fragment slot="sidebarLeft">
 		<div>
 			<Navigation />
-		</div>
-	</svelte:fragment>
+		</div> -->
+	<!-- </svelte:fragment> -->
 	<!-- Main Content Slot -->
 	<slot />
 	<!-- Footer Slot -->

@@ -12,6 +12,7 @@
 
 			console.log('E-Mail:', userEmail, 'Nachricht:', userMessage);
 			// Hier würde dein Code zur Datenübermittlung an dein Backend oder einen E-Mail-Service stehen.
+			
 		});
 	});
 </script>
