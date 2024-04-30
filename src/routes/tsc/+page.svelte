@@ -163,7 +163,17 @@
 						<div class="flex justify-around items-center">
 							<img
 								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_news.png"
+								src="/images/tsc/Screenshot_news2.png"
+								alt="registartion"
+							/>
+							<img
+								class="flex max-h-80 p-1"
+								src="/images/tsc/Screenshot_news3.png"
+								alt="registartion"
+							/>
+							<img
+								class="flex max-h-80 p-1"
+								src="/images/tsc/Screenshot_news4.png"
 								alt="registartion"
 							/>
 						</div>
@@ -171,7 +181,7 @@
 						<div class="flex justify-around items-center">
 							<img
 								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_news.png"
+								src="/images/tsc/Screenshot_news_search.png"
 								alt="registartion"
 							/>
 						</div>
