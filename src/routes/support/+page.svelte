@@ -1,7 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
 
-	export let data;
 
 	onMount(() => {
 		const form = document.getElementById('supportForm');
