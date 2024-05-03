@@ -1,8 +1,35 @@
 <script>
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
+	import { writable } from 'svelte/store';
 	let tabSet = 0;
+
+	let overlayVisible = writable(false);
+	let selectedImage = writable('');
+
+	function openOverlay(imageSrc) {
+		console.log('openOverlay', imageSrc);
+		selectedImage.set(imageSrc);
+		overlayVisible.set(true);
+	}
+
+	function closeOverlay() {
+		overlayVisible.set(false);
+	}
 </script>
 
+<!-- Overlay Element -->
+{#if $overlayVisible}
+	<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+		<div class="relative max-h-full max-w-full">
+			<img class="object-contain max-h-screen w-auto" src={$selectedImage} alt="Bild im Overlay" />
+			<button
+				class="absolute top-2 right-2 text-white text-3xl p-1 rounded-full bg-black bg-opacity-50"
+				style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;"
+				on:click={closeOverlay}>&times;</button
+			>
+		</div>
+	</div>
+{/if}
 <div class="container mx-auto flex flex-col justify-center items-center min-h-screen">
 	<div class="space-y-10 text-center flex flex-col items-center">
 		<figure>
@@ -11,32 +38,41 @@
 		</figure>
 	</div>
 </div>
-<div class="pb-20 flex justify-around items-center mx-96 bg-surface-600--token">
-	<a
-		href="https://testflight.apple.com/join/qtIuJFF5"
-		target="_blank"
-		style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"
-		><img
-			src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1635206400"
-			alt="Download on the App Store"
-			style="border-radius: 13px; width: 250px; height: 83px;"
-		/></a
-	>
 
-	<a
-		href="https://play.google.com/store/apps/details?id=de.breubeer.tsc&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
-		target="_blank"
-		><img
-			alt="Jetzt bei Google Play"
-			src="https://play.google.com/intl/en_us/badges/static/images/badges/de_badge_web_generic.png"
-			style="border-radius: 13px; height: 105px;"
-		/></a
-	>
+<div
+	class="pb-20 flex flex-col lg:flex-row justify-around items-center bg-surface-600--token shrink-0"
+>
+	<!-- App Store und Google Play Links angepasst -->
+	<div class="flex-none">
+		<a
+			href="https://testflight.apple.com/join/qtIuJFF5"
+			target="_blank"
+			style="overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"
+			><img
+				src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1635206400"
+				alt="Download on the App Store"
+				style="border-radius: 13px; width: 250px; height: 83px;"
+			/></a
+		>
+	</div>
+
+	<div class="flex-none">
+		<a
+			class="flex justify-center items-center schrink-0"
+			href="https://play.google.com/store/apps/details?id=de.breubeer.tsc&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+			target="_blank"
+			><img
+				alt="Jetzt bei Google Play"
+				src="https://play.google.com/intl/en_us/badges/static/images/badges/de_badge_web_generic.png"
+				style="border-radius: 13px; height: 105px;"
+			/></a
+		>
+	</div>
 </div>
 <div>
-	<h1 class="text-4xl ml-24 py-3">Account & Mitglieder</h1>
-	<div class="flex mx-20 bg-surface-200-700-token rounded-2xl">
-		<!-- Linke Spalte für die Erklärung -->
+	<h1 class="text-2xl md:text-4xl ml-4 md:ml-24 py-3">Account & Mitglieder</h1>
+	<div class="flex flex-col md:flex-row mx-4 md:mx-20 bg-surface-200-700-token rounded-2xl">
+		<!-- Anpassungen für mobile Ansicht -->
 
 		<div class="flex-1 p-4 m-10">
 			<p>
@@ -66,52 +102,86 @@
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
 					{#if tabSet === 0}
-						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_start1.png"
-								alt="registartion"
-							/>
-							<img
-								class="max-h-80 p-1"
-								src="/images/tsc/Screenshot_start2.png"
-								alt="registartion"
-							/>
-							<img
-								class="max-h-80 p-1"
-								src="/images/tsc/Screenshot_start3.png"
-								alt="registartion"
-							/>
+						<div class="flex justify-around items-center overflow-auto">
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_start1.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_start1.png"
+									alt="registration 1"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_start2.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_start2.png"
+									alt="registration 2"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_start3.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_start3.png"
+									alt="registration 3"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 1}
-						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_registration.png"
-								alt="registartion"
-							/>
+						<div class="flex justify-around items-center overflow-auto">
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_registration.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_registration.png"
+									alt="registration 4"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 2}
-						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_login.png"
-								alt="registartion"
-							/>
+						<div class="flex justify-around items-center overflow-auto">
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_login.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_login.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 3}
-						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_userlist.png"
-								alt="registartion"
-							/>
-
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_invite.png"
-								alt="registartion"
-							/>
+						<div class="flex justify-around items-center overflow-auto">
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_userlist.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_userlist.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_invite.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_invite.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{/if}
 				</svelte:fragment>
@@ -153,37 +223,62 @@
 				<svelte:fragment slot="panel">
 					{#if tabSet === 0}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_news.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_news.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_news.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 1}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_news2.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_news3.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_news4.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_news2.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_news2.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_news3.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_news3.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_news4.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_news4.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 2}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_news_search.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_news_search.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_news_search.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{/if}
 				</svelte:fragment>
@@ -230,37 +325,62 @@
 				<svelte:fragment slot="panel">
 					{#if tabSet === 0}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_sop.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_sop.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_sop.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 1}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_sop2.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_sop3.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_sop4.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_sop2.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_sop2.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_sop3.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_sop3.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_sop4.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_sop4.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 2}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_sop.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_sop.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_sop.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{/if}
 				</svelte:fragment>
@@ -340,34 +460,59 @@
 						</div>
 					{:else if tabSet === 1}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_userlist4.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_userlist5.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_userlist4.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_userlist4.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_userlist5.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_userlist5.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 2}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_userlist.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_userlist3.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_avatar.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_userlist.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_userlist.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_userlist3.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_userlist3.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_avatar.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_avatar.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{/if}
 				</svelte:fragment>
@@ -412,32 +557,52 @@
 				<svelte:fragment slot="panel">
 					{#if tabSet === 0}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_spannungsspeicher.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_spannungsspeicher.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 1}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_spannungsspeicher.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_spannungsspeicher2.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_spannungsspeicher.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher2.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_spannungsspeicher2.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{:else if tabSet === 2}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_spannungsspeicher.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_spannungsspeicher.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{/if}
 				</svelte:fragment>
@@ -478,21 +643,37 @@
 				<svelte:fragment slot="panel">
 					{#if tabSet === 0}
 						<div class="flex justify-around items-center">
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_account2.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_delete.png"
-								alt="registartion"
-							/>
-							<img
-								class="flex max-h-80 p-1"
-								src="/images/tsc/Screenshot_settings.png"
-								alt="registartion"
-							/>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_account2.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_account2.png"
+									alt="registration 5"
+								/>
+							</button>
+
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_delete.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_delete.png"
+									alt="registration 5"
+								/>
+							</button>
+							<button
+								class="focus:outline-none shrink-0"
+								on:click={() => openOverlay('/images/tsc/Screenshot_settings.png')}
+							>
+								<img
+									class="max-w-full max-h-80 p-1 cursor-pointer"
+									src="/images/tsc/Screenshot_settings.png"
+									alt="registration 5"
+								/>
+							</button>
 						</div>
 					{/if}
 				</svelte:fragment>
@@ -516,7 +697,7 @@
 	}
 
 	.h2 {
-		@apply text-5xl;
+		@apply text-xl sm:text-5xl; /* Textgröße anpassen */
 	}
 
 	@keyframes glow {
