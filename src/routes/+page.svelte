@@ -1,12 +1,14 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script>
-	import { CodeBlock } from '@skeletonlabs/skeleton';
 	import Timeline from '../lib/TimeLine/timeline.svelte';
+	import { initializeStores, Toast } from '@skeletonlabs/skeleton';
+
+	initializeStores();
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-10 text-center flex flex-col items-center">
-		<h2 class="h2">Welcome to breubeer.eu</h2>
+		<h2 class="h2">🐻 breubeer.eu</h2>
 		<!-- Animated Logo -->
 		<figure>
 			<section class="img-bg" />
@@ -66,7 +68,7 @@
 		</figure>
 		<!-- / -->
 		<div class="flex justify-center space-x-2">
-		<Timeline />
+			<Timeline />
 		</div>
 	</div>
 </div>

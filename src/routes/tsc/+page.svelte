@@ -190,8 +190,8 @@
 	</div>
 </div>
 <div>
-	<h1 class="text-4xl ml-24 mt-20 py-3">News & Infos verwalten</h1>
-	<div class="flex mx-20 bg-surface-200-700-token rounded-2xl">
+	<h1 class="text-2xl md:text-4xl ml-4 md:ml-24 py-3">News & Infos verwalten</h1>
+	<div class="flex flex-col md:flex-row mx-4 md:mx-20 bg-surface-200-700-token rounded-2xl">
 		<!-- Linke Spalte für die Erklärung -->
 
 		<div class="flex-1 p-4 m-10">
@@ -288,8 +288,8 @@
 </div>
 
 <div>
-	<h1 class="text-4xl ml-24 mt-20 py-3">SOP verwalten</h1>
-	<div class="flex mx-20 bg-surface-200-700-token rounded-2xl">
+	<h1 class="text-2xl md:text-4xl ml-4 md:ml-24 py-3">SOP verwalten</h1>
+	<div class="flex flex-col md:flex-row mx-4 md:mx-20 bg-surface-200-700-token rounded-2xl">
 		<!-- Linke Spalte für die Erklärung -->
 
 		<div class="flex-1 p-4 m-10">
@@ -390,8 +390,8 @@
 </div>
 
 <div>
-	<h1 class="text-4xl ml-24 mt-20 py-3">Dein Team</h1>
-	<div class="flex mx-20 bg-surface-200-700-token rounded-2xl">
+	<h1 class="text-2xl md:text-4xl ml-4 md:ml-24 py-3">Dein Team</h1>
+	<div class="flex flex-col md:flex-row mx-4 md:mx-20 bg-surface-200-700-token rounded-2xl">
 		<!-- Linke Spalte für die Erklärung -->
 
 		<div class="flex-1 p-4 m-10">
@@ -522,8 +522,8 @@
 </div>
 
 <div>
-	<h1 class="text-4xl ml-24 mt-20 py-3">Der Spannungsspeicher</h1>
-	<div class="flex mx-20 bg-surface-200-700-token rounded-2xl">
+	<h1 class="text-2xl md:text-4xl ml-4 md:ml-24 py-3">Der Spannungsspeicher</h1>
+	<div class="flex flex-col md:flex-row mx-4 md:mx-20 bg-surface-200-700-token rounded-2xl">
 		<!-- Linke Spalte für die Erklärung -->
 
 		<div class="flex-1 p-4 m-10">
@@ -612,8 +612,8 @@
 </div>
 
 <div class="mb-20">
-	<h1 class="text-4xl ml-24 mt-20 py-3">Einstellungen & Account löschen</h1>
-	<div class="flex mx-20 bg-surface-200-700-token rounded-2xl">
+	<h1 class="text-2xl md:text-4xl ml-4 md:ml-24 py-3">Einstellungen & Account löschen</h1>
+	<div class="flex flex-col md:flex-row mx-4 md:mx-20 bg-surface-200-700-token rounded-2xl">
 		<!-- Linke Spalte für die Erklärung -->
 
 		<div class="flex-1 p-4 m-10">
@@ -670,7 +670,8 @@
 							>
 								<img
 									class="max-w-full max-h-80 p-1 cursor-pointer"
-									src="/images/tsc/Screenshot_settings.png"
+									src="/images/tsc/Screenshot_se
+									ttings.png"
 									alt="registration 5"
 								/>
 							</button>
