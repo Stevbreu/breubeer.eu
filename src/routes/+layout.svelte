@@ -1,8 +1,10 @@
 <script>
 	import '../app.postcss';
-	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, Toast } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/Navigation/navigation.svelte';
 	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
+	import { getToastStore } from '@skeletonlabs/skeleton';
+
 
 	// Highlight JS
 	import hljs from 'highlight.js/lib/core';
@@ -31,6 +33,7 @@
 
 	initializeStores();
 
+
 	const drawerStore = getDrawerStore();
 </script>
 
@@ -47,8 +50,8 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<div>
-					<div class="flex items-center">
+				<div class="flex">
+					<div>
 						<button class="lg:hidden btn btn-sm mr-4" on:click={drawerOpen}>
 							<span>
 								<svg viewBox="0 0 100 80" class="fill-token w-4 h-4">
@@ -98,4 +101,5 @@
 			<Footer />
 		</div>
 	</svelte:fragment>
+	<Toast />
 </AppShell>

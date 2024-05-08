@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-
+	import { getToastStore } from '@skeletonlabs/skeleton';
+	const toastStore = getToastStore();
 
 	onMount(() => {
 		const form = document.getElementById('supportForm');
@@ -11,9 +12,54 @@
 
 			console.log('E-Mail:', userEmail, 'Nachricht:', userMessage);
 			// Hier würde dein Code zur Datenübermittlung an dein Backend oder einen E-Mail-Service stehen.
-			
 		});
 	});
+
+	let showContactForm = false;
+	let showToast = false; // Zustandsvariable für den Toast
+	let toastMessage = ''; // Nachricht, die im Toast angezeigt wird
+
+	let email = '';
+	let subject = 'Supportanfrage breubeer.eu';
+	let message = '';
+	let isEmailSendSuccess = true; // Standardmäßig auf `true` gesetzt
+
+	// function displayToast(message, isSuccess) {
+	// 	toastMessage = message;
+	// 	isEmailSendSuccess = isSuccess;
+	// 	showToast = true;
+	// 	setTimeout(() => (showToast = false), 5000);
+	// }
+
+	const ToastError = {
+		message: 'Es ist ein Fehler aufgetreten',
+		background: 'bg-red-500'
+	};
+
+	const ToastSuccess = {
+		message: 'E-Mail erfolgreich gesendet',
+		background: 'bg-green-500'
+	};
+
+	async function sendEmail() {
+		try {
+			const response = await fetch('http://localhost:3000/send-email', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ email, subject, message })
+			});
+
+			if (response.ok) {
+				toastStore.trigger(ToastSuccess);
+			} else {
+				toastStore.trigger(ToastError);
+			}
+		} catch {
+			toastStore.trigger(ToastError);
+		}
+	}
 </script>
 
 <div class="container mx-auto flex flex-col justify-center items-center min-h-screen">
@@ -38,6 +84,7 @@
 				<input
 					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 					id="userEmail"
+					bind:value={email}
 					type="email"
 					placeholder="Ihre E-Mail-Adresse"
 					required
@@ -51,6 +98,7 @@
 					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
 					id="userMessage"
 					rows="4"
+					bind:value={message}
 					placeholder="Schreiben Sie hier Ihre Nachricht..."
 					required
 				></textarea>
@@ -65,6 +113,7 @@
 					> einverstanden.
 				</p>
 				<button
+					on:click={sendEmail}
 					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 					type="submit"
 				>
@@ -74,6 +123,17 @@
 		</form>
 	</div>
 </div>
+
+<!-- Hier ist der Toast -->
+{#if showToast}
+	<div
+		class="fixed bottom-5 left-1/2 transform -translate-x-1/2 {isEmailSendSuccess
+			? 'bg-green-500'
+			: 'bg-red-500'} text-white p-5 rounded-3xl"
+	>
+		{toastMessage}
+	</div>
+{/if}
 
 <style lang="postcss">
 	figure {
