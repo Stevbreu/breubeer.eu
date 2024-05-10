@@ -222,7 +222,7 @@
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
 					{#if tabSet === 0}
-						<div class="flex justify-around items-center">
+						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_news.png')}
@@ -235,7 +235,7 @@
 							</button>
 						</div>
 					{:else if tabSet === 1}
-						<div class="flex justify-around items-center">
+						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_news2.png')}
@@ -268,7 +268,7 @@
 							</button>
 						</div>
 					{:else if tabSet === 2}
-						<div class="flex justify-around items-center">
+						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_news_search.png')}
@@ -324,8 +324,8 @@
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
 					{#if tabSet === 0}
-						<div class="flex justify-around items-center">
-							<button
+					<div class="flex justify-around items-center overflow-auto">
+						<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_sop.png')}
 							>
@@ -337,8 +337,8 @@
 							</button>
 						</div>
 					{:else if tabSet === 1}
-						<div class="flex justify-around items-center">
-							<button
+					<div class="flex justify-around items-center overflow-auto">
+						<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_sop2.png')}
 							>
@@ -370,8 +370,8 @@
 							</button>
 						</div>
 					{:else if tabSet === 2}
-						<div class="flex justify-around items-center">
-							<button
+					<div class="flex justify-around items-center overflow-auto">
+						<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_sop.png')}
 							>
@@ -459,8 +459,8 @@
 							/>
 						</div>
 					{:else if tabSet === 1}
-						<div class="flex justify-around items-center">
-							<button
+					<div class="flex justify-around items-center overflow-auto">
+						<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_userlist4.png')}
 							>
@@ -482,8 +482,8 @@
 							</button>
 						</div>
 					{:else if tabSet === 2}
-						<div class="flex justify-around items-center">
-							<button
+					<div class="flex justify-around items-center overflow-auto">
+						<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_userlist.png')}
 							>
@@ -556,8 +556,8 @@
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
 					{#if tabSet === 0}
-						<div class="flex justify-around items-center">
-							<button
+					<div class="flex justify-around items-center overflow-auto">
+						<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher.png')}
 							>
@@ -569,8 +569,8 @@
 							</button>
 						</div>
 					{:else if tabSet === 1}
-						<div class="flex justify-around items-center">
-							<button
+					<div class="flex justify-around items-center overflow-auto">
+						<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher.png')}
 							>
@@ -592,8 +592,8 @@
 							</button>
 						</div>
 					{:else if tabSet === 2}
-						<div class="flex justify-around items-center">
-							<button
+					<div class="flex justify-around items-center overflow-auto">
+						<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher.png')}
 							>
@@ -642,8 +642,8 @@
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
 					{#if tabSet === 0}
-						<div class="flex justify-around items-center">
-							<button
+					<div class="flex justify-around items-center overflow-auto">
+						<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_account2.png')}
 							>
