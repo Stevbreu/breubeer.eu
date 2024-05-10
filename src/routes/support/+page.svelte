@@ -41,9 +41,10 @@
 		background: 'bg-green-500'
 	};
 
-	async function sendEmail() {
+	async function sendEmail(event) {
+		event.preventDefault(); // Verhindert das normale Submit-Verhalten
 		try {
-			const response = await fetch('http://localhost:3000/send-email', {
+			const response = await fetch('https://breubeer.eu/api/send-email', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -76,7 +77,7 @@
 		</p>
 	</div>
 	<div class="w-full max-w-xl p-6">
-		<form id="supportForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+		<form id="supportForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" on:submit={sendEmail}>
 			<div class="mb-4">
 				<label class="block text-gray-700 text-sm font-bold mb-2" for="userEmail">
 					Ihre E-Mail-Adresse
@@ -113,7 +114,6 @@
 					> einverstanden.
 				</p>
 				<button
-					on:click={sendEmail}
 					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 					type="submit"
 				>
