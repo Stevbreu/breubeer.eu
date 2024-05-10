@@ -15,6 +15,6 @@
 		<li><a href="/support" on:click={drawerClose}>Support</a></li>
 		<hr />
 		<br />
-		<p class="text-xs">v0.0.1</p>
+		<p class="text-xs">v1.0.0</p>
 	</ul>
 </nav>

@@ -1,7 +1,12 @@
 <script>
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
 	import { writable } from 'svelte/store';
-	let tabSet = 0;
+	let tabSet_1 = 0;
+	let tabSet_2 = 0;
+	let tabSet_3 = 0;
+	let tabSet_4 = 0;
+	let tabSet_5 = 0;
+	let tabSet_6 = 0;
 
 	let overlayVisible = writable(false);
 	let selectedImage = writable('');
@@ -94,14 +99,14 @@
 		<div class="flex-1 p-4 bg-surface-300-600-token m-10 rounded-2xl">
 			<!-- Hier kommt deine Tab-Komponente -->
 			<TabGroup>
-				<Tab bind:group={tabSet} name="tab1" value={0}>Start</Tab>
-				<Tab bind:group={tabSet} name="tab2" value={1}>Registration</Tab>
-				<Tab bind:group={tabSet} name="tab3" value={2}>Login</Tab>
-				<Tab bind:group={tabSet} name="tab4" value={3}>Einladen</Tab>
+				<Tab bind:group={tabSet_1} name="tab1" value={0}>Start</Tab>
+				<Tab bind:group={tabSet_1} name="tab2" value={1}>Registration</Tab>
+				<Tab bind:group={tabSet_1} name="tab3" value={2}>Login</Tab>
+				<Tab bind:group={tabSet_1} name="tab4" value={3}>Einladen</Tab>
 
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
-					{#if tabSet === 0}
+					{#if tabSet_1 === 0}
 						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
@@ -134,7 +139,7 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 1}
+					{:else if tabSet_1 === 1}
 						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
@@ -147,7 +152,7 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 2}
+					{:else if tabSet_1 === 2}
 						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
@@ -160,7 +165,7 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 3}
+					{:else if tabSet_1 === 3}
 						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
@@ -215,13 +220,13 @@
 		<div class="flex-1 p-4 bg-surface-300-600-token m-10 rounded-2xl">
 			<!-- Hier kommt deine Tab-Komponente -->
 			<TabGroup>
-				<Tab bind:group={tabSet} name="tab1" value={0}>Übersicht</Tab>
-				<Tab bind:group={tabSet} name="tab2" value={1}>News erstellen</Tab>
-				<Tab bind:group={tabSet} name="tab3" value={2}>Suchen</Tab>
+				<Tab bind:group={tabSet_2} name="tab1" value={0}>Übersicht</Tab>
+				<Tab bind:group={tabSet_2} name="tab2" value={1}>News erstellen</Tab>
+				<Tab bind:group={tabSet_2} name="tab3" value={2}>Suchen</Tab>
 
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
-					{#if tabSet === 0}
+					{#if tabSet_2 === 0}
 						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
@@ -234,7 +239,7 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 1}
+					{:else if tabSet_2 === 1}
 						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
@@ -267,7 +272,7 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 2}
+					{:else if tabSet_2 === 2}
 						<div class="flex justify-around items-center overflow-auto">
 							<button
 								class="focus:outline-none shrink-0"
@@ -317,15 +322,15 @@
 		<div class="flex-1 p-4 bg-surface-300-600-token m-10 rounded-2xl">
 			<!-- Hier kommt deine Tab-Komponente -->
 			<TabGroup>
-				<Tab bind:group={tabSet} name="tab1" value={0}>Übersicht</Tab>
-				<Tab bind:group={tabSet} name="tab2" value={1}>SOP erstellen</Tab>
-				<Tab bind:group={tabSet} name="tab3" value={2}>Suchen</Tab>
+				<Tab bind:group={tabSet_3} name="tab1" value={0}>Übersicht</Tab>
+				<Tab bind:group={tabSet_3} name="tab2" value={1}>SOP erstellen</Tab>
+				<Tab bind:group={tabSet_3} name="tab3" value={2}>Suchen</Tab>
 
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
-					{#if tabSet === 0}
-					<div class="flex justify-around items-center overflow-auto">
-						<button
+					{#if tabSet_3 === 0}
+						<div class="flex justify-around items-center overflow-auto">
+							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_sop.png')}
 							>
@@ -336,9 +341,9 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 1}
-					<div class="flex justify-around items-center overflow-auto">
-						<button
+					{:else if tabSet_3 === 1}
+						<div class="flex justify-around items-center overflow-auto">
+							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_sop2.png')}
 							>
@@ -369,9 +374,9 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 2}
-					<div class="flex justify-around items-center overflow-auto">
-						<button
+					{:else if tabSet_3 === 2}
+						<div class="flex justify-around items-center overflow-auto">
+							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_sop.png')}
 							>
@@ -433,14 +438,14 @@
 		<div class="flex-1 p-4 bg-surface-300-600-token m-10 rounded-2xl">
 			<!-- Hier kommt deine Tab-Komponente -->
 			<TabGroup>
-				<Tab bind:group={tabSet} name="tab1" value={0}>Übersicht</Tab>
-				<Tab bind:group={tabSet} name="tab2" value={1}>Team verwaltung</Tab>
-				<Tab bind:group={tabSet} name="tab3" value={2}>Avatar gestallten</Tab>
+				<Tab bind:group={tabSet_4} name="tab1" value={0}>Übersicht</Tab>
+				<Tab bind:group={tabSet_4} name="tab2" value={1}>Team verwaltung</Tab>
+				<Tab bind:group={tabSet_4} name="tab3" value={2}>Avatar gestallten</Tab>
 
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
-					{#if tabSet === 0}
-						<div class="flex justify-around items-center">
+					{#if tabSet_4 === 0}
+						<div class="flex justify-around items-center overflow-auto">
 							<img
 								class="flex max-h-80 p-1"
 								src="/images/tsc/Screenshot_userlist.png"
@@ -458,9 +463,9 @@
 								alt="registartion"
 							/>
 						</div>
-					{:else if tabSet === 1}
-					<div class="flex justify-around items-center overflow-auto">
-						<button
+					{:else if tabSet_4 === 1}
+						<div class="flex justify-around items-center overflow-auto">
+							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_userlist4.png')}
 							>
@@ -481,9 +486,9 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 2}
-					<div class="flex justify-around items-center overflow-auto">
-						<button
+					{:else if tabSet_4 === 2}
+						<div class="flex justify-around items-center overflow-auto">
+							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_userlist.png')}
 							>
@@ -549,15 +554,15 @@
 		<div class="flex-1 p-4 bg-surface-300-600-token m-10 rounded-2xl">
 			<!-- Hier kommt deine Tab-Komponente -->
 			<TabGroup>
-				<Tab bind:group={tabSet} name="tab1" value={0}>Übersicht</Tab>
-				<Tab bind:group={tabSet} name="tab2" value={1}>Spannung erstellen</Tab>
-				<Tab bind:group={tabSet} name="tab3" value={2}>Suchen</Tab>
+				<Tab bind:group={tabSet_5} name="tab1" value={0}>Übersicht</Tab>
+				<Tab bind:group={tabSet_5} name="tab2" value={1}>Spannung erstellen</Tab>
+				<Tab bind:group={tabSet_5} name="tab3" value={2}>Suchen</Tab>
 
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
-					{#if tabSet === 0}
-					<div class="flex justify-around items-center overflow-auto">
-						<button
+					{#if tabSet_5 === 0}
+						<div class="flex justify-around items-center overflow-auto">
+							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher.png')}
 							>
@@ -568,9 +573,9 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 1}
-					<div class="flex justify-around items-center overflow-auto">
-						<button
+					{:else if tabSet_5 === 1}
+						<div class="flex justify-around items-center overflow-auto">
+							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher.png')}
 							>
@@ -591,9 +596,9 @@
 								/>
 							</button>
 						</div>
-					{:else if tabSet === 2}
-					<div class="flex justify-around items-center overflow-auto">
-						<button
+					{:else if tabSet_5 === 2}
+						<div class="flex justify-around items-center overflow-auto">
+							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_spannungsspeicher.png')}
 							>
@@ -637,13 +642,13 @@
 		<div class="flex-1 p-4 bg-surface-300-600-token m-10 rounded-2xl">
 			<!-- Hier kommt deine Tab-Komponente -->
 			<TabGroup>
-				<Tab bind:group={tabSet} name="tab1" value={0}>Profil bearbeiten</Tab>
+				<Tab bind:group={tabSet_6} name="tab1" value={0}>Profil bearbeiten</Tab>
 
 				<!-- Tab Panels -->
 				<svelte:fragment slot="panel">
-					{#if tabSet === 0}
-					<div class="flex justify-around items-center overflow-auto">
-						<button
+					{#if tabSet_6 === 0}
+						<div class="flex justify-around items-center overflow-auto">
+							<button
 								class="focus:outline-none shrink-0"
 								on:click={() => openOverlay('/images/tsc/Screenshot_account2.png')}
 							>
