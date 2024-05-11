@@ -64,7 +64,7 @@
 	<div class="flex-none">
 		<a
 			class="flex justify-center items-center schrink-0"
-			href="https://play.google.com/store/apps/details?id=de.breubeer.tsc&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+			0ßhref="https://play.google.com/store/apps/details?id=de.breubeer.tsc&hl=en-US&ah=e1_YqLhWx_GZXLLz-WfIEQDZgvM"
 			target="_blank"
 			><img
 				alt="Jetzt bei Google Play"
