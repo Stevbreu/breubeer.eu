@@ -28,7 +28,7 @@
 	//console.log(formattedText);
 </script>
 
-<article class="prose lg:prose-sm p-4 max-w-none text-white">
+<article class="prose lg:prose-sm p-4 max-w-none dark:text-white">
 	{#if formattedText}
 		{@html formattedText}
 	{:else}
