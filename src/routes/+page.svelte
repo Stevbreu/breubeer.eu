@@ -2,6 +2,8 @@
 <script>
 	import Timeline from '../lib/TimeLine/timeline.svelte';
 	import { initializeStores, Toast } from '@skeletonlabs/skeleton';
+	import { LightSwitch } from '@skeletonlabs/skeleton';
+
 
 	initializeStores();
 </script>

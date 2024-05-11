@@ -4,7 +4,7 @@
 	import Navigation from '$lib/Navigation/navigation.svelte';
 	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-
+	import { LightSwitch } from '@skeletonlabs/skeleton';
 
 	// Highlight JS
 	import hljs from 'highlight.js/lib/core';
@@ -32,7 +32,6 @@
 	}
 
 	initializeStores();
-
 
 	const drawerStore = getDrawerStore();
 </script>
@@ -83,6 +82,7 @@
 					</a>
 					<a class="btn btn-sm variant-ghost-surface" href="/support" rel="noreferrer"> Support </a>
 				</div>
+				<LightSwitch />
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
