@@ -74,7 +74,7 @@
 					</a>
 					<a
 						class="btn btn-sm variant-ghost-surface"
-						href="https://facebook.com/"
+						href="https://www.facebook.com/search/top?q=team%20sop%20connect%20app"
 						target="_blank"
 						rel="noreferrer"
 					>
